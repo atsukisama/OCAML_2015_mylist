@@ -12,7 +12,6 @@ let rec length list =
 let rec nth list x =
   if x > 0 then
     match list with
-    | x < 0 || length list < x -> failwith "nth: out of bound"
     | Item (elem, items) -> nth items (x - 1)
     | _ -> failwith "nth : error"
 ;;
