@@ -4,12 +4,12 @@ type 'a my_list =
 
 let hd = function
   | Item(elem, items) -> elem
-  | _ -> failwith "hd : List is empty or invalid"
+  | _ -> raise (Failure "hd")
 ;;
 
 let tl = function
   | Item(elem, items) -> items
-  | _ -> failwith "tl : List is empty or invalid"
+  | _ -> raise (Failure "tl")
 ;;
 
 let rec length = function
@@ -21,9 +21,9 @@ let rec nth list x =
   if x >= 0 then
     match list with
     | Item(elem, items) -> if x > 0 then nth items (x - 1) else elem
-    | _ -> failwith "nth : error"
+    | _ -> raise (Failure "nth")
   else
-    failwith "nth : error"
+    raise (Invalid_argument "List.nth")
 ;;
 
 let rec append list1 list2 =
